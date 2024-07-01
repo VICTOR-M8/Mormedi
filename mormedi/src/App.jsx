@@ -1,73 +1,114 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [fecha, setFechaPeticion] = useState("");
+
+  const handleFechaChange = (e) => {
+    const value = e.target.value;
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    const formattedDate = new Date(value).toLocaleDateString("es-ES", options);
+    setFechaPeticion(
+      formattedDate.replace("de ", "de").replace(" 202", " del 202")
+    );
+  };
+
   return (
     <>
       <div className="container">
-        <h2>Oferta</h2>
+        <h2>Formulario de Oferta</h2>
         <form>
-  
           <div className="primeros3">
-            <div className="form-group">
-              <label htmlFor="numero">Número:</label>
-              <input type="text" id="numero" name="numero" />
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Numero</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="estado">Estado:</label>
-              <select id="estado" name="estado">
-                <option value="stand-by">Stand-by</option>
-                <option value="win">Win</option>
-                <option value="lost">Lost</option>
+
+            <div className="group">
+              <select required="" className="input">
+                <option value="" disabled selected></option>
+                <option value="Stand-by">Stand-by</option>
+                <option value="Win">Win</option>
+                <option value="Lost">Lost</option>
               </select>
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Estado</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="comercial">Comercial:</label>
-              <input type="text" id="comercial" name="comercial" />
+
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Comercial</label>
             </div>
           </div>
 
           {/* siguentes 6 campos */}
           <div className="form-row campos1">
-          <div className="form-group empresa-group">
-              <label htmlFor="empresa">Empresa:</label>
-              <input type="text" id="empresa" name="empresa" />
-              <button type="button">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6H7v-2h4V7h2v4h4v2h-4v6z"
-                  />
-                </svg>
-              </button>
+          
+           
+  <div class="input-container">
+    <input required="" type="text" class="input_btn" />
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label className="text">Empresa</label>
+    <button type="button" class="add-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 8v4a.5.5 0 0 1-1 0V8H3a.5.5 0 0 1 0-1h4V3a.5.5 0 0 1 1 0v4h4a.5.5 0 0 1 0 1H8z"/>
+      </svg>
+    </button>
+  
+</div>
+
+
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Persona</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="persona">Persona:</label>
-              <input type="text" id="persona" name="persona" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="pais">País:</label>
-              <select id="pais" name="pais">
-                <option value="mexico">México</option>
+
+            <div className="group">
+              <select required="" className="input_2">
+                <option value="" disabled selected></option>
                 <option value="argentina">Argentina</option>
-                <option value="brasil">Brasil</option>
+                <option value="bolivia">Bolivia</option>
+                <option value="brazil">Brazil</option>
                 <option value="chile">Chile</option>
                 <option value="colombia">Colombia</option>
+                <option value="ecuador">Ecuador</option>
+                <option value="paraguay">Paraguay</option>
+                <option value="peru">Peru</option>
+                <option value="uruguay">Uruguay</option>
+                <option value="venezuela">Venezuela</option>
               </select>
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>País</label>
             </div>
-          </div>
 
-          <div className="campos1">
-            <div className="form-group">
-              <label htmlFor="departamento">Departamento:</label>
-              <input type="text" id="departamento" name="departamento" />
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Departamento</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="sector">Sector:</label>
-              <input type="text" id="sector" name="sector" />
+
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Sector</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="subsector">Subsector:</label>
-              <input type="text" id="subsector" name="subsector" />
+
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Subsector</label>
             </div>
           </div>
 
@@ -77,7 +118,13 @@ function App() {
             <div className="form-group">
               <div className="radio-group">
                 <label>
-                  <input type="radio" name="tipo" value="nueva" /> Nueva
+                  <input
+                    type="radio"
+                    name="tipo"
+                    value="nueva"
+                    class="input_1"
+                  />{" "}
+                  Nueva
                 </label>
                 <label>
                   <input type="radio" name="tipo" value="ampliacion" />{" "}
@@ -85,75 +132,93 @@ function App() {
                 </label>
               </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="persona">Persona:</label>
-              <input type="text" id="persona" name="persona" />
+            <div class="group">
+              <input required="" type="text" class="input" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Titulo</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="Fecha de peticion">Fecha de peticion:</label>
-              <input type="date" id="Fecha de peticion" name="Fecha de peticion" />
+            <div className="group">
+              <input
+                required=""
+                type="date"
+                className="input"
+                onChange={handleFechaChange}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Fecha de petición</label>
             </div>
-
-            {/* ------------------------------------------------------ */}
-
-            <div className="form-row siguientes6">
-              <div className="importe">
-              <div className="form-group ">
-                <label htmlFor="importe">Importe:</label>
-                <input type="number" id="importe" name="importe" />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="probabilidad">Probabilidad:</label>
-                <select id="probabilidad" name="probabilidad">
-                  <option value="10">10%</option>
-                  <option value="30">30%</option>
-                  <option value="50">50%</option>
-                  <option value="75">75%</option>
-                  <option value="100">100%</option>
-                </select>
-              </div>
-  
+            <div class="group">
+              <input required="" type="text" class="input_1" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Importe €</label>
             </div>
-            </div>
-
-            
-            
-              <div className="form-group">
-                <label htmlFor="offering">Offering:</label>
-                <select id="offering" name="offering">
-                  <option value="option1">Opción 1</option>
-                  <option value="option2">Opción 2</option>
-                  <option value="option3">Opción 3</option>
-                  
-                </select>
-              </div>
-              <div className="form-group">
-              <label htmlFor="fecha-espera">Fecha Esperada:</label>
-              <input type="date" id="fecha-espera" name="fecha-espera" />
+            <div className="group">
+              <select required="" className="input_1">
+                <option value="" disabled selected></option>
+                <option value="10%">10%</option>
+                <option value="30%">30%</option>
+                <option value="50%">50%</option>
+                <option value="75%">75%</option>
+                <option value="100%">100%</option>
+              </select>
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Probabilidad</label>
             </div>
 
-            <div className="form-group">
-                <label htmlFor="Quien">Quien:</label>
-                <select id="Quien" name="Quien">
-                  <option value="juanito">juanito</option>
-                  <option value="pedro">pedro</option>
-                  <option value="santi">santi</option>
-                  
-                </select>
-              </div>
-            
+            <div className="group">
+              <select required="" className="input_2">
+                <option value="" disabled selected></option>
+                <option value="Design">Design</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Digital">Digital</option>
+                <option value="DIS+EST">DIS+EST</option>
+                <option value="DIS+DIG">DIS+DIG</option>
+              </select>
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Offering</label>
+            </div>
+            <div className="group">
+              <input
+                required=""
+                type="date"
+                className="input"
+                onChange={handleFechaChange}
+              />
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Fecha esperada</label>
+            </div>
+
+            <div className="persona">
+            <div class="group_1">
+            <input required="" type="text" class="input" />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Persona</label>
           </div>
+            </div>
           
+          </div>
+
+          
+
           <div className="form-group">
             <label htmlFor="comentarios">Comentarios:</label>
             <textarea id="comentarios" name="comentarios" rows="4"></textarea>
           </div>
 
-          
           <div className="form-buttons">
-            <button className="guardar" type="submit">Guardar</button>
-            <button className="cancelar" type="button">Cancelar</button>
+            <button className="guardar" type="submit">
+              Guardar
+            </button>
+            <button className="cancelar" type="button">
+              Cancelar
+            </button>
           </div>
         </form>
       </div>
